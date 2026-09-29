@@ -1,0 +1,6 @@
+"use client";
+import {useState} from "react";
+import {supabase} from "../../lib/supabase";
+export default function Login(){const[email,setEmail]=useState("");const[password,setPassword]=useState("");const[msg,setMsg]=useState("");
+async function submit(e:React.FormEvent){e.preventDefault();const r=await supabase.auth.signInWithPassword({email,password});if(r.error)setMsg(r.error.message);else window.location.href="/dashboard";}
+return <main style={{minHeight:"100vh",display:"grid",placeItems:"center",background:"#f4f7f4"}}><form onSubmit={submit} style={{width:380,background:"#fff",padding:36,borderRadius:18,border:"1px solid #dfe6e0"}}><b style={{fontSize:22}}>ContaExpress</b><h1>Entrar na sua conta</h1><p>Acompanhe pedidos, documentos e serviços num só lugar.</p><input style={{width:"100%",padding:13,margin:"8px 0",boxSizing:"border-box"}} type="email" placeholder="Email" value={email} onChange={e=>setEmail(e.target.value)} required/><input style={{width:"100%",padding:13,margin:"8px 0",boxSizing:"border-box"}} type="password" placeholder="Palavra-passe" value={password} onChange={e=>setPassword(e.target.value)} required/>{msg&&<p style={{color:"#a04437"}}>{msg}</p>}<button style={{width:"100%",padding:13,marginTop:12,background:"#173f2a",color:"#fff",border:0,borderRadius:8,fontWeight:800}}>Entrar</button></form></main>}
