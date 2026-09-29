@@ -1,1 +1,24 @@
-{"name":"contaexpress","version":"0.1.0","private":true,"scripts":{"dev":"next dev","build":"next build","start":"next start","lint":"next lint"},"dependencies":{"@supabase/ssr":"latest","@supabase/supabase-js":"latest","lucide-react":"latest","next":"latest","react":"latest","react-dom":"latest"},"devDependencies":{"@types/node":"latest","@types/react":"latest","@types/react-dom":"latest","typescript":"latest"}}
+{
+  "name": "contaexpress",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@supabase/ssr": "0.8.0",
+    "@supabase/supabase-js": "2.117.1",
+    "lucide-react": "0.468.0",
+    "next": "16.3.6",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "latest",
+    "@types/react": "latest",
+    "@types/react-dom": "latest",
+    "typescript": "7.0.2"
+  }
+}
