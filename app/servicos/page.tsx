@@ -1,0 +1,6 @@
+"use client";
+import {useEffect,useState} from "react";
+import {supabase} from "../../lib/supabase";
+type Service={id:string;name:string;description:string|null;price:number|null;currency:string;sla_hours:number|null};
+export default function Services(){const[s,setS]=useState<Service[]>([]);useEffect(()=>{supabase.from("services").select("id,name,description,price,currency,sla_hours").eq("active",true).order("name").then(({data})=>setS(data||[]))},[]);
+return <main style={{minHeight:"100vh",background:"#f7f9f7",padding:"60px 8%",color:"#1a261f"}}><a href="/">← ContaExpress</a><h1 style={{fontSize:46}}>Escolha exactamente o que precisa.</h1><p>Serviços com escopo, preço e prazo definidos antes de começar.</p><div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(250px,1fr))",gap:16,marginTop:40}}>{s.map(x=><article key={x.id} style={{background:"#fff",border:"1px solid #dfe6e1",borderRadius:15,padding:24}}><h2>{x.name}</h2><p>{x.description}</p><b>{x.price?(x.price.toLocaleString("pt-MZ")+" "+x.currency):"Sob consulta"}</b><p>SLA: {x.sla_hours?x.sla_hours+" horas":"A combinar"}</p><button onClick={()=>location.href="/pedido?service="+x.id} style={{padding:11,width:"100%",background:"#edf4ee",border:0,borderRadius:8,fontWeight:800}}>Solicitar →</button></article>)}</div></main>}
