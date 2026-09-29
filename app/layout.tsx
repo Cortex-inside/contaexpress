@@ -1,0 +1,1 @@
+import "./globals.css"; import type { Metadata } from "next"; export const metadata:Metadata={title:"ContaExpress",description:"Serviços de contabilidade simples, transparentes e sob demanda."}; export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="pt"><body>{children}</body></html>}
